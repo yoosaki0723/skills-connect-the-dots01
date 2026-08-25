@@ -17,38 +17,44 @@ _リポジトリの中をたどるときに役立つコツ。_
 </header>
 
 <!--
-  <<< Author notes: Step 2 >>>
+  <<< Author notes: Step 3 >>>
   Start this step by acknowledging the previous step.
   Define terms and link to docs.github.com.
 -->
 
-## Step 2: 履歴からコミットを見つける
+## Step 3: 壊れたサイドバーを直す
 
-_重複の指摘をありがとうございます :wave:_
+_コミットを見つけられましたね :heart:_
 
-バージョン管理の重要な点のひとつは、過去をさかのぼって見られることです。`git blame` を使ってコミットの背景をたどると、コードについて人を _blame_（責める）する以上のことができます。なぜコミットが行われたのかという経緯が見えます。関連する pull request はどれか。誰が pull request を承認したか。マージ前にどんなテストが実行されたか。
+サイドバーが確かに追加されたこと、`add sidebar to documentation` のコミットで行われたことが分かりました。もう少し掘り下げて、変更をめぐる計画や会話がコメントとして残っていないか調べましょう。
 
-履歴を調べる分かりやすい理由は、履歴を知るためです。Issue と pull request があれば、最低限の情報だけでなく、より完全な経緯が分かります。
+すでに見たとおり、Issue や pull request での会話は別の作業を参照できますが、得られる文脈はクロスリンクだけにとどまりません。Git はバージョン管理です。たとえば、前の Step で見つけたコミットには、次のような情報がひも付いています。
 
-### `git blame` とは
+- 誰がコミットをしたか。
+- ほかにどんな変更が含まれていたか。
+- いつコミットされたか。
+- どの pull request の一部だったか。
 
-`git blame` は、ファイルの各行を最後に変更したリビジョンと作者を表示する Git の機能です。誰がいつコミットしたか、さらになぜコミットしたかまで調べられます。ファイルへの変更を誰が入れたのか分からないときは、`git blame` で確認できます。`git blame` という名前は責任追及のように聞こえますが、判断の背景を理解するために使えます。
+pull request が重要なのは、コミットがいつ行われたかを超えた情報が分かるからです。_なぜ_ コミットが行われたかを知ることができます。履歴を調べるのは誰かを _責める_ ためではなく、全体像を見るためです。なぜ判断がされたのか。誰が関わったのか。各コミットのビルド結果とテスト結果はどうだったのか。誰が変更を要求し、誰が承認したのか。
 
-### SHA（Secure Hash Algorithm）とは
+### コミットから pull request を見つける
 
-SHA は特定のオブジェクトへの参照です。演習ではコミットへの参照を指します。GitHub では、特定のコミットを開くと、どんな変更が入ったか、誰が入れたか、pull request の一部だったかを確認できます。
+GitHub でコミットを表示すると、多くの情報が見られます。コミットの画面から、コミットが作られた pull request へのリンクもたどれます。次の Step で使います。
 
-### :keyboard: やること: 履歴からコミットを見つける
+![GitHub のコミット画面で、pull request へのリンクを示したスクリーンショット](https://user-images.githubusercontent.com/16547949/67341250-3edbb480-f4fd-11e9-805a-6bce5a8ba2d1.png)
 
-1. 自分のリポジトリの Code タブを開きます。
-   - _ヒント: リポジトリは別のタブで開いているかもしれません_
-2. `docs` をクリックして `/docs` ディレクトリに入ります。
-3. `_sidebar.md` をクリックしてファイルを表示します。
-4. ファイルの上部にある **Blame** をクリックし、直近のリビジョンの詳細を見ます。
-5. コミットメッセージ `add sidebar to documentation` をクリックして、コミットの詳細を表示します。
-6. SHA の先頭 7 文字をコピーします（`commit` の後ろに並ぶ 40 文字の 16 進数の、最初の 7 文字です）。
-7. 手順 6 の SHA をコメント本文にして Issue #2 にコメントし、"Comment" ボタンをクリックします。
-8. 20 秒ほど待ってから、手順を読んでいるページ（README）を再読み込みします。[GitHub Actions](https://docs.github.com/en/actions) が自動で次の Step に更新します。
+### :keyboard: やること: 壊れたサイドバーを直す
+
+1. main ブランチで [`docs/_sidebar.md` ファイルを編集](/docs/_sidebar.md)します。
+2. 4 行目にある参照 `(doc-references__.md)` のつづりを `(doc-references.md)` に直します。
+3. コミット用に新しいブランチ `fix-sidebar` を選択または作成し、pull request を開始します。
+4. **base:** に **main**、**compare:** に **fix-sidebar** が選ばれていることを確認します。
+5. 右側の **Assignees** で、自分を pull request の担当者に割り当てます。
+6. pull request のコメントに 'Closes #2' と入力し、Issue #2 を自動リンクします。
+7. **Create pull request** をクリックし、20 秒ほど待ちます。
+8. pull request をマージします。
+9. ブランチ 'fix-sidebar' を削除します。
+10. 20 秒ほど待ってから、手順を読んでいるページ（README）を再読み込みします。[GitHub Actions](https://docs.github.com/en/actions) が自動で次の Step に更新します。
 
 <footer>
 
