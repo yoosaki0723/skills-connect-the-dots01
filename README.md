@@ -17,34 +17,38 @@ _リポジトリの中をたどるときに役立つコツ。_
 </header>
 
 <!--
-  <<< Author notes: Step 1 >>>
-  Choose 3-5 steps for your course.
-  The first step is always the hardest, so pick something easy!
-  Link to docs.github.com for further explanations.
-  Encourage users to open new tabs for steps!
+  <<< Author notes: Step 2 >>>
+  Start this step by acknowledging the previous step.
+  Define terms and link to docs.github.com.
 -->
 
-## Step 1: 重複した Issue を整理する
+## Step 2: 履歴からコミットを見つける
 
-_コースへようこそ :tada:_
+_重複の指摘をありがとうございます :wave:_
 
-GitHub には、GitHub 上の別の情報を参照するための特別な機能があります。たとえば、別の Issue や pull request を番号で参照すると、番号がリンクになります。同時に、リンク先の Issue や pull request の側にも相互参照（cross-reference）が作られます。双方向の参照によって、GitHub 上の情報どうしの関係を追えます。
+バージョン管理の重要な点のひとつは、過去をさかのぼって見られることです。`git blame` を使ってコミットの背景をたどると、コードについて人を _blame_（責める）する以上のことができます。なぜコミットが行われたのかという経緯が見えます。関連する pull request はどれか。誰が pull request を承認したか。マージ前にどんなテストが実行されたか。
 
-![Issue から PR へのリンクと、PR 側に作られた相互参照のスクリーンショット](https://user-images.githubusercontent.com/6351798/172456846-2daec570-08b0-4ffa-a7cb-41acc50b836e.png)
+履歴を調べる分かりやすい理由は、履歴を知るためです。Issue と pull request があれば、最低限の情報だけでなく、より完全な経緯が分かります。
 
-複数のメンバーで共同作業をしていると、Issue が重複することがあります。上の例では、新しい Issue `#8346` が以前の Issue `#8249` の重複です。相互参照の機能があるので、重複をたどり、適切なタイミングで Issue をクローズできます。
+### `git blame` とは
 
-### 参照を作る
+`git blame` は、ファイルの各行を最後に変更したリビジョンと作者を表示する Git の機能です。誰がいつコミットしたか、さらになぜコミットしたかまで調べられます。ファイルへの変更を誰が入れたのか分からないときは、`git blame` で確認できます。`git blame` という名前は責任追及のように聞こえますが、判断の背景を理解するために使えます。
 
-別の Issue へリンクすると、GitHub の中に参照が自動で作られます。完全な URL を書く必要すらありません。コメントの中に `#5` と入力すれば、Issue または pull request の 5 番へのリンクになります。
+### SHA（Secure Hash Algorithm）とは
 
-クロスリンクを作りたいときは、`#` 記号を入力した直後に Issue や pull request のタイトルを打ち始めてください。GitHub が正しいリンク先の候補を提案します。さらに詳しくは [Autolinked References and URLs](https://docs.github.com/en/articles/autolinked-references-and-urls) の記事を参照してください。
+SHA は特定のオブジェクトへの参照です。演習ではコミットへの参照を指します。GitHub では、特定のコミットを開くと、どんな変更が入ったか、誰が入れたか、pull request の一部だったかを確認できます。
 
-### :keyboard: やること: クロスリンクされた Issue を見つけてクローズする
+### :keyboard: やること: 履歴からコミットを見つける
 
-1. Issue #1（Welcome）を開きます。
-2. コメントに "Duplicate of #2" と入力し、Issue #1 をクローズします。
-3. 20 秒ほど待ってから、手順を読んでいるページ（README）を再読み込みします。[GitHub Actions](https://docs.github.com/en/actions) が自動で次の Step に更新します。
+1. 自分のリポジトリの Code タブを開きます。
+   - _ヒント: リポジトリは別のタブで開いているかもしれません_
+2. `docs` をクリックして `/docs` ディレクトリに入ります。
+3. `_sidebar.md` をクリックしてファイルを表示します。
+4. ファイルの上部にある **Blame** をクリックし、直近のリビジョンの詳細を見ます。
+5. コミットメッセージ `add sidebar to documentation` をクリックして、コミットの詳細を表示します。
+6. SHA の先頭 7 文字をコピーします（`commit` の後ろに並ぶ 40 文字の 16 進数の、最初の 7 文字です）。
+7. 手順 6 の SHA をコメント本文にして Issue #2 にコメントし、"Comment" ボタンをクリックします。
+8. 20 秒ほど待ってから、手順を読んでいるページ（README）を再読み込みします。[GitHub Actions](https://docs.github.com/en/actions) が自動で次の Step に更新します。
 
 <footer>
 
