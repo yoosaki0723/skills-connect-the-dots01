@@ -17,51 +17,34 @@ _リポジトリの中をたどるときに役立つコツ。_
 </header>
 
 <!--
-  <<< Author notes: Course start >>>
-  Include start button, a note about Actions minutes,
-  and tell the learner why they should take the course.
+  <<< Author notes: Step 1 >>>
+  Choose 3-5 steps for your course.
+  The first step is always the hardest, so pick something easy!
+  Link to docs.github.com for further explanations.
+  Encourage users to open new tabs for steps!
 -->
 
-## ようこそ
+## Step 1: 重複した Issue を整理する
 
-履歴が長く積み重なったリポジトリで作業したことはありますか。関連する Issue や pull request を過去にさかのぼって探したり、ある変更を誰がコミットしたのかを突き止めたりした経験があるなら、作業場所をたどれることの大切さが分かるはずです。
+_コースへようこそ :tada:_
 
-- **対象**: 開発者、GitHub ユーザー、Git を使い始めた人、学生、管理者、チーム
-- **学ぶこと**:
-  - 関連する Issue と pull request を見つける。
-  - 履歴を検索して背景を知る。
-  - GitHub の中でつながりを作り、ほかの人が情報を見つけやすくする。
-- **作るもの**: 既存のコミット、重複した Issue、直すべき内容の不具合を含むリポジトリ
-- **前提**: 受講前に、GitHub Docs の [GitHub Quickstart](https://docs.github.com/en/get-started/quickstart) と GitHub Skills の [Introduction to GitHub](https://github.com/skills/introduction-to-github) に目を通しておくと理解しやすくなります。
-- **所要時間**: 15 分以内で完了します。
+GitHub には、GitHub 上の別の情報を参照するための特別な機能があります。たとえば、別の Issue や pull request を番号で参照すると、番号がリンクになります。同時に、リンク先の Issue や pull request の側にも相互参照（cross-reference）が作られます。双方向の参照によって、GitHub 上の情報どうしの関係を追えます。
 
-コースで行うこと:
+![Issue から PR へのリンクと、PR 側に作られた相互参照のスクリーンショット](https://user-images.githubusercontent.com/6351798/172456846-2daec570-08b0-4ffa-a7cb-41acc50b836e.png)
 
-1. 重複した Issue を整理する。
-2. 履歴からコミットを見つける。
-3. 壊れたサイドバーを直す。
+複数のメンバーで共同作業をしていると、Issue が重複することがあります。上の例では、新しい Issue `#8346` が以前の Issue `#8249` の重複です。相互参照の機能があるので、重複をたどり、適切なタイミングで Issue をクローズできます。
 
-### コースの始め方
+### 参照を作る
 
-<!-- For start course, run in JavaScript:
-'https://github.com/new?' + new URLSearchParams({
-  template_owner: 'mamezou',
-  template_name: 'skills-ja-connect-the-dots',
-  owner: '@me',
-  name: 'skills-connect-the-dots',
-  description: 'My clone repository',
-  visibility: 'public',
-}).toString()
--->
+別の Issue へリンクすると、GitHub の中に参照が自動で作られます。完全な URL を書く必要すらありません。コメントの中に `#5` と入力すれば、Issue または pull request の 5 番へのリンクになります。
 
-[![start-course](https://user-images.githubusercontent.com/1221423/235727646-4a590299-ffe5-480d-8cd5-8194ea184546.svg)](https://github.com/new?template_owner=mamezou&template_name=skills-ja-connect-the-dots&owner=%40me&name=skills-connect-the-dots&description=My+clone+repository&visibility=public)
+クロスリンクを作りたいときは、`#` 記号を入力した直後に Issue や pull request のタイトルを打ち始めてください。GitHub が正しいリンク先の候補を提案します。さらに詳しくは [Autolinked References and URLs](https://docs.github.com/en/articles/autolinked-references-and-urls) の記事を参照してください。
 
-1. **Start course** を右クリックして、リンクを新しいタブで開きます。
-2. 開いたタブでは、入力欄のほとんどが自動で埋まります。
-   - Owner には、リポジトリを置く個人アカウントまたは Organization を選びます。
-   - private リポジトリは [Actions の実行時間を消費する](https://docs.github.com/en/billing/managing-billing-for-github-actions/about-billing-for-github-actions)ため、public リポジトリを推奨します。
-   - 下までスクロールし、フォーム下部の **Create repository** ボタンをクリックします。
-3. 新しいリポジトリが作られたら 20 秒ほど待ち、ページを再読み込みします。新しいリポジトリの README に出る手順に従って進めてください。
+### :keyboard: やること: クロスリンクされた Issue を見つけてクローズする
+
+1. Issue #1（Welcome）を開きます。
+2. コメントに "Duplicate of #2" と入力し、Issue #1 をクローズします。
+3. 20 秒ほど待ってから、手順を読んでいるページ（README）を再読み込みします。[GitHub Actions](https://docs.github.com/en/actions) が自動で次の Step に更新します。
 
 <footer>
 
